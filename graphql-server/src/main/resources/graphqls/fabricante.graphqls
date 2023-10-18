@@ -1,0 +1,7 @@
+type Fabricante {
+	id: Long
+    nome: String
+    cidade: String
+    estado: String
+    categoria: String
+}

@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "9b31493c-6acb-4928-a342-2d62eebcc497",
+		"name": "Estudo Graphql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17974796"
+	},
+	"item": [
+		{
+			"name": "Server",
+			"item": [
+				{
+					"name": "Busca completa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    findProdutos\n    {  \n        id, nome, dataValidade, lote,\n        fabricante {\n            id, \n            nome, \n            cidade,\n            estado,\n            categoria\n        }\n    \n    }\n} ",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8095/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca de apenas alguns campos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    findProdutos\n    {  \n        id, nome    \n    }\n} ",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8095/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    findProduto(id: 7)\n    {  \n        id, nome, dataValidade   \n    }\n} ",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8095/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro de Produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    cadastraProduto(produto: {\n        nome: \"Bolacha Salgada\",\n        lote: \"L21\",\n        dataValidade: \"2022-05-12\",\n        idFabricante: 1\n    })\n    {  \n        id, nome,\n        fabricante {\n            id,\n            nome\n        }\n    }\n} ",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8095/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exception handler",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    findProduto(id: 16)\n    {  \n        id, nome    \n    }\n} ",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8095/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Busca por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8096/produtos/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"produtos",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8096/produtos",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra Produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Bolacha Doce\",\r\n    \"lote\": \"L21\",\r\n    \"dataValidade\": \"2022-05-12\",\r\n    \"idFabricante\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8096/produtos",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

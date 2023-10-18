@@ -1,0 +1,6 @@
+scalar BigDecimal
+scalar BigInteger
+scalar Byte
+scalar Char
+scalar Short
+scalar Long

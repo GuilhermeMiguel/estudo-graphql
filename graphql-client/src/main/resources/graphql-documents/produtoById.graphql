@@ -1,0 +1,13 @@
+query productById($id: Long!) {
+    findProduto(id: $id)
+    {
+        id, nome, dataValidade, lote,
+        fabricante {
+                    id,
+                    nome,
+                    cidade,
+                    estado,
+                    categoria
+                }
+    }
+}

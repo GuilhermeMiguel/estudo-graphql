@@ -1,0 +1,14 @@
+query {
+    findProdutos
+    {
+        id, nome, dataValidade, lote,
+        fabricante {
+            id,
+            nome,
+            cidade,
+            estado,
+            categoria
+        }
+
+    }
+}

@@ -1,0 +1,14 @@
+type Produto {
+	id: Long!
+    nome: String
+    fabricante: Fabricante
+    lote: String
+    dataValidade: Date
+}
+
+input ProdutoRequest {
+	nome: String
+    idFabricante: Long
+    lote: String
+    dataValidade: String
+}

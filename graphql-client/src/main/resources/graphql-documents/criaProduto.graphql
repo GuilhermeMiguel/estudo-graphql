@@ -1,0 +1,15 @@
+mutation criaProduto($nome: String!, $lote: String, $dataValidade: String, $idFabricante: Long! ) {
+    cadastraProduto(produto: {
+        nome: $nome,
+        lote: $lote,
+        dataValidade: $dataValidade,
+        idFabricante: $idFabricante
+       })
+    {
+         id, nome, dataValidade, lote
+        fabricante {
+            id,
+            nome
+        }
+    }
+}

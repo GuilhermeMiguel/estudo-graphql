@@ -1,0 +1,8 @@
+type Query {
+    findProdutos: [Produto]
+	findProduto(id: Long) : Produto
+}
+
+type Mutation {
+    cadastraProduto(produto: ProdutoRequest): Produto
+}
